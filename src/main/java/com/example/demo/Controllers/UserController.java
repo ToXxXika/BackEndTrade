@@ -33,6 +33,19 @@ public class UserController {
             return  false ;
         }
     }
+    @GetMapping("/verifUSer")
+    public boolean verifuser(@RequestParam(name = "username") String username,@RequestParam(name = "password") String password){
+        Query query = new Query();
+        query.addCriteria(Criteria.where(username="username").is(username).and(password="password").is(password));
+        try {
+            List<User> users = mongoTemplate.find(query,User.class);
+            if(users.isEmpty()){
+                return false;
+            }else return  true ;
+        }catch (Exception E ){
+            System.out.println(E.getMessage());return false;
+        }
+    }
 
     @GetMapping("/getUserByCin")
     public int getuserbycin(@RequestParam(name = "cin") String cin ){

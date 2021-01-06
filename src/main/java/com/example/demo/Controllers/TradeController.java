@@ -1,8 +1,8 @@
 package com.example.demo.Controllers;
 
 import com.example.demo.Documents.Trade;
-import com.example.demo.Documents.User;
 import com.example.demo.Repositories.TradeRepository;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin("*")
@@ -41,5 +42,10 @@ public class TradeController {
     @GetMapping("getAllTrades")
     public List<Trade> getTrades2(){
         return TR.findAll();
+    }
+
+    @GetMapping("getTradeById")
+    public Optional<Trade> getTradeById(@RequestParam(name = "id")ObjectId id){
+        return  TR.findById(id);
     }
 }
