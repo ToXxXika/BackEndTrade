@@ -1,13 +1,14 @@
 package com.example.demo.Documents;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "trade")
 public class Trade {
 
-    @Id
-    private String id ;
+
+    private ObjectId id ;
     private String client1;
     private String client2;
     private boolean statutechange ;
@@ -19,7 +20,7 @@ public class Trade {
     public Trade() {
     }
 
-    public Trade(String id, String client1, String client2, boolean statutechange, boolean confirmationc1, String produitc1, String produitc2, boolean confirmationadmin) {
+    public Trade(ObjectId id, String client1, String client2, boolean statutechange, boolean confirmationc1, String produitc1, String produitc2, boolean confirmationadmin) {
         this.id = id;
         this.client1 = client1;
         this.client2 = client2;
@@ -58,7 +59,7 @@ public class Trade {
         this.confirmationadmin = confirmationadmin;
     }
 
-    public String getId() {
+    public ObjectId getId() {
         return id;
     }
 

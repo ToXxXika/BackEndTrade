@@ -1,12 +1,13 @@
 package com.example.demo.Documents;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "user")
 public class User {
-    @Id
-    private String id ;
+
+    private ObjectId id ;
     private String cin ;
     private String name;
     private String surname;
@@ -18,7 +19,7 @@ public class User {
 
     }
 
-    public User(String id, String cin, String name, String surname, String username, String telephone, String mail) {
+    public User(ObjectId id, String cin, String name, String surname, String username, String telephone, String mail) {
         this.id = id;
         this.cin = cin;
         this.name = name;
@@ -28,7 +29,7 @@ public class User {
         this.mail = mail;
     }
 
-    public String getId() {
+    public ObjectId getId() {
         return id;
     }
 

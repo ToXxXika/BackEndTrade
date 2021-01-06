@@ -1,5 +1,6 @@
 package com.example.demo.Documents;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -7,12 +8,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Product {
 
     @Id
-    private String id ;
+    private ObjectId id ;
     private String nomproduit;
     private String matriculeproduit;
     private String imgproduit;
 
-    public String getId() {
+    public ObjectId getId() {
         return id;
     }
 
@@ -44,7 +45,7 @@ public class Product {
 
     }
 
-    public Product(String id, String nomproduit, String matriculeproduit, String imgproduit) {
+    public Product(ObjectId id, String nomproduit, String matriculeproduit, String imgproduit) {
         this.id = id;
         this.nomproduit = nomproduit;
         this.matriculeproduit = matriculeproduit;
