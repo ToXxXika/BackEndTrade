@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -36,7 +37,7 @@ public class UserController {
     @GetMapping("/verifUSer")
     public boolean verifuser(@RequestParam(name = "username") String username,@RequestParam(name = "password") String password){
         Query query = new Query();
-        query.addCriteria(Criteria.where(username="username").is(username).and(password="password").is(password));
+        query.addCriteria(Criteria.where("username").is(username).and("password").is(password));
         try {
             List<User> users = mongoTemplate.find(query,User.class);
             if(users.isEmpty()){
@@ -54,6 +55,18 @@ public class UserController {
         query.addCriteria(Criteria.where("cin").is(cin));
         List<User> users = mongoTemplate.find(query, User.class);
         return users.size();
+    }
+    @GetMapping("/deleteuser")
+    public boolean deleteuser(@RequestParam(name = "cin")String cin){
+      try {
+          Query query = new Query();
+          query.addCriteria(Criteria.where("cin").is(cin));
+          List<User> users = mongoTemplate.find(query, User.class);
+          UR.deleteById(users.get(0).getId());
+          return  true ;
+      }catch (Exception E){ System.out.println(E.getMessage());return false ;}
+
+
     }
 
 

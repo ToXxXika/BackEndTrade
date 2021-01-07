@@ -48,4 +48,6 @@ public class TradeController {
     public Optional<Trade> getTradeById(@RequestParam(name = "id")ObjectId id){
         return  TR.findById(id);
     }
+
+
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/product")
 public class ProductController {
@@ -24,7 +25,7 @@ public class ProductController {
     public List<Product> getAllProducts(){return PR.findAll();}
 
     @PostMapping("addProduct")
-    public Boolean addProduct(@RequestBody Product p){
+    public boolean addProduct(@RequestBody Product p){
         try{
             PR.save(p);
             return true;

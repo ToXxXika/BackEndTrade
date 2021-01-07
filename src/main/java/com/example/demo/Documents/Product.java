@@ -4,6 +4,9 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Date;
+import java.util.Map;
+
 @Document(collection = "product")
 public class Product {
 
@@ -12,6 +15,15 @@ public class Product {
     private String nomproduit;
     private String matriculeproduit;
     private String imgproduit;
+    private Map<String, Date> infoTrade ;
+
+    public Map<String, Date> getInfoTrade() {
+        return infoTrade;
+    }
+
+    public void setInfoTrade(Map<String, Date> infoTrade) {
+        this.infoTrade = infoTrade;
+    }
 
     public ObjectId getId() {
         return id;

@@ -14,13 +14,22 @@ public class User {
     private String username;
     private String telephone;
     private String mail;
+    private String password ;
 
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public  User(){
 
     }
 
-    public User(ObjectId id, String cin, String name, String surname, String username, String telephone, String mail) {
+    public User(String password,ObjectId id, String cin, String name, String surname, String username, String telephone, String mail) {
         this.id = id;
         this.cin = cin;
         this.name = name;
@@ -28,6 +37,7 @@ public class User {
         this.username = username;
         this.telephone = telephone;
         this.mail = mail;
+        this.password=password;
     }
 
     public ObjectId getId() {
