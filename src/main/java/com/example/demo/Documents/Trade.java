@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Trade {
 
 
-    private ObjectId id ;
+    private ObjectId _id ;
     private String client1;
     private String client2;
     private boolean statutechange ;
@@ -16,12 +16,13 @@ public class Trade {
     private String produitc1;
     private String produitc2;
     private boolean confirmationadmin;
+    private String matriculetrade;
 
     public Trade() {
     }
 
-    public Trade(ObjectId id, String client1, String client2, boolean statutechange, boolean confirmationc1, String produitc1, String produitc2, boolean confirmationadmin) {
-        this.id = id;
+    public Trade(ObjectId id, String client1, String client2, boolean statutechange, boolean confirmationc1, String produitc1, String produitc2, boolean confirmationadmin,String matriculetrade) {
+        this._id = id;
         this.client1 = client1;
         this.client2 = client2;
         this.statutechange = statutechange;
@@ -29,6 +30,15 @@ public class Trade {
         this.produitc1 = produitc1;
         this.produitc2 = produitc2;
         this.confirmationadmin = confirmationadmin;
+        this.matriculetrade=matriculetrade;
+    }
+
+    public String getMatriculetrade() {
+        return matriculetrade;
+    }
+
+    public void setMatriculetrade(String matriculetrade) {
+        this.matriculetrade = matriculetrade;
     }
 
     public void setClient1(String client1) {
@@ -60,7 +70,7 @@ public class Trade {
     }
 
     public ObjectId getId() {
-        return id;
+        return _id;
     }
 
     public String getClient1() {
