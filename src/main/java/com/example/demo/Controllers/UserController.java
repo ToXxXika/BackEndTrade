@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @CrossOrigin("*")
@@ -33,6 +34,11 @@ public class UserController {
         }catch (Exception E){
             return  false ;
         }
+    }
+    @GetMapping("/login")
+    public Principal login(Principal principal){
+        System.out.println("userLogged"+principal);
+        return principal ;
     }
     @GetMapping("/verifUSer")
     public boolean verifuser(@RequestParam(name = "username") String username,@RequestParam(name = "password") String password){

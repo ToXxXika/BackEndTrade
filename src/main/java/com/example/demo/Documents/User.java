@@ -2,10 +2,17 @@ package com.example.demo.Documents;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Document(collection = "user")
-public class User {
+public class User implements UserDetails {
 
     private ObjectId id ;
     private String cin ;
@@ -15,6 +22,23 @@ public class User {
     private String telephone;
     private String mail;
     private String password ;
+    private String role ;
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    @Transient
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        Collection<GrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority(role));
+        return authorities;
+    }
 
 
     public String getPassword() {
@@ -68,9 +92,31 @@ public class User {
         this.surname = surname;
     }
 
+
     public String getUsername() {
         return username;
     }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
 
     public void setUsername(String username) {
         this.username = username;
