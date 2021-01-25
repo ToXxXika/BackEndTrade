@@ -40,6 +40,8 @@ public class UserController {
         System.out.println("userLogged"+principal);
         return principal ;
     }
+    // this function is used before we set Spring Security
+    /*
     @GetMapping("/verifUSer")
     public boolean verifuser(@RequestParam(name = "username") String username,@RequestParam(name = "password") String password){
         Query query = new Query();
@@ -53,7 +55,7 @@ public class UserController {
             System.out.println(E.getMessage());return false;
         }
     }
-
+*/
     @GetMapping("/getUserByCin")
     public int getuserbycin(@RequestParam(name = "cin") String cin ){
 
