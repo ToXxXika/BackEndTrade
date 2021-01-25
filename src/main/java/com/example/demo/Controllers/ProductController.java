@@ -12,22 +12,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
-
 import org.springframework.web.bind.annotation.*;
 
 import javax.imageio.ImageIO;
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.security.Security;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Properties;
-import java.util.*;
-import javax.mail.*;
-import javax.mail.internet.*;
-import javax.activation.*;
 
 
 @CrossOrigin("*")
@@ -103,7 +102,7 @@ public class ProductController {
         final String username = "mabrouki552";
         final String password ="Freefallaga123";
        String from ="mabrouki552@gmail.com";
-        String to = "toxxxika028@gmail.com";
+        String to = mail;
         String host ="localhost";
         Properties prop  = new Properties();
         prop.put("mail.smtp.host","smtp.gmail.com");
